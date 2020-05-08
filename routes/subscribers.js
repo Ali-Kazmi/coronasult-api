@@ -59,6 +59,7 @@ router.delete('/:id', getSubscriber, async (req, res) => {
   }
 })
 
+
 // Middleware function for gettig subscriber object by ID
 async function getSubscriber(req, res, next) {
   try {

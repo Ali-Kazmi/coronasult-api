@@ -15,8 +15,8 @@ router.get('/', async (req, res) => {
 // Creating one user
 router.post('/', async (req, res) => {
   const user = new User({
-    firstName: req.body.firstname,
-    lastName: req.body.lastname,
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
     birthday: req.body.birthday,
     locationTested: req.body.locationTested
   })

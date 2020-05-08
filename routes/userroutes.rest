@@ -1,0 +1,17 @@
+
+GET http://localhost:3000/users
+
+###
+
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+  "firstName": "Ali",
+  "lastName": "Kazmi",
+  "birthday":"2001-01-16",
+  "location": "California"
+}
+
+###
+DELETE http://localhost:3000/users/5eb5a7fda053780208b3164b

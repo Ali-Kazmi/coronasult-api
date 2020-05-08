@@ -20,7 +20,7 @@ const userSchema = new mongoose.Schema({
     default: Date.now
   },
   currentResult:{
-      type: Integer,
+      type: Number,
       default: 0
   },
   locationTested:{
