@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const User = require('../models/user')
 
-// Getting all subscribers
+// Getting all users
 router.get('/', async (req, res) => {
   try {
     const users = await User.find()
@@ -72,7 +72,7 @@ router.delete('/:id', getUser, async (req, res) => {
 })
 
 
-// Middleware function for gettig subscriber object by ID
+// Middleware function for gettig user object by ID
 async function getUser(req, res, next) {
   try {
     user = await User.findById(req.params.id)
