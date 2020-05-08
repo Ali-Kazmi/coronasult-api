@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
   }
 })
 
-// Creating one subscriber
+// Creating one user
 router.post('/', async (req, res) => {
   const user = new User({
     firstName: req.body.firstname,
@@ -22,40 +22,50 @@ router.post('/', async (req, res) => {
   })
 
   try {
-    const newSubscriber = await subscriber.save()
-    res.status(201).json(newSubscriber)
+    const newUser = await user.save()
+    res.status(201).json(newUser)
   } catch (err) {
     res.status(400).json({ message: err.message })
   }
 })
 
-// Getting one subscriber
-router.get('/:id', getSubscriber, (req, res) => {
-  res.json(res.subscriber)
+// Getting one user
+router.get('/:id', getUser, (req, res) => {
+  res.json(res.user)
 })
 
-// Updating one subscriber
-router.patch('/:id', getSubscriber, async (req, res) => {
-  if (req.body.name != null) {
-    res.subscriber.name = req.body.name
+// Updating one user
+router.patch('/:id', getUser, async (req, res) => {
+  if (req.body.firstName != null) {
+    res.user.firstName = req.body.firstName
   }
 
-  if (req.body.subscribedChannel != null) {
-    res.subscriber.subscribedChannel = req.body.subscribedChannel
+  if (req.body.lastName != null) {
+    res.user.lastName = req.body.lastName
   }
+  if (req.body.birthday != null) {
+    res.user.birthday = req.body.birthday
+  }
+  if (req.body.locationTested != null) {
+    res.user.locationTested = req.body.locationTested
+  }
+  if (req.body.currentResult != null) {
+    res.user.currentResult = req.body.currentResult
+  }
+  
   try {
-    const updatedSubscriber = await res.subscriber.save()
-    res.json(updatedSubscriber)
+    const updatedUser = await res.user.save()
+    res.json(updatedUser)
   } catch (err){
     res.status(400).json({ message: err.message })
   }
 
 })
-// Deleting one subscriber
-router.delete('/:id', getSubscriber, async (req, res) => {
+// Deleting one user
+router.delete('/:id', getUser, async (req, res) => {
   try {
-    await res.subscriber.remove()
-    res.json({ message: 'Deleted This Subscriber' })
+    await res.user.remove()
+    res.json({ message: 'Deleted This User' })
   } catch(err) {
     res.status(500).json({ message: err.message })
   }
@@ -63,17 +73,17 @@ router.delete('/:id', getSubscriber, async (req, res) => {
 
 
 // Middleware function for gettig subscriber object by ID
-async function getSubscriber(req, res, next) {
+async function getUser(req, res, next) {
   try {
-    subscriber = await Subscriber.findById(req.params.id)
-    if (subscriber == null) {
-      return res.status(404).json({ message: 'Cant find subscriber'})
+    user = await User.findById(req.params.id)
+    if (user == null) {
+      return res.status(404).json({ message: 'Cant find user'})
     }
   } catch(err){
     return res.status(500).json({ message: err.message })
   }
   
-  res.subscriber = subscriber
+  res.user = user
   next()
 }
 
