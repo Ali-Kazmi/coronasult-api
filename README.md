@@ -34,3 +34,5 @@ Content-Type: application/json
 }
 
 For more example commands and example functionality, please see the userroutes.rest file. 
+
+The api was built by me (Ali) and the frontend for the project is being built in angular by christopher ballenger.
