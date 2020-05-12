@@ -8,6 +8,9 @@ I tested using the REST extension in vs code to send HTTP post, get, patch reque
 
 The main coronasults repository can be found at the link below. It is meant to be a way for governments to efficiently distribute test results, and more info is there. 
 
+https://github.com/christophrrb/coronasults
+
+
 Usage:
 - Run `npm install` to install node modules
 - install nodemon and mongoose using npm 
